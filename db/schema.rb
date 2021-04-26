@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 2021_04_26_171751) do
     t.string "short_description"
     t.boolean "contracted"
     t.boolean "obsolete"
-    t.integer "new_article_id"
     t.integer "maker_id", null: false
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "new_article_id"
     t.index ["maker_id"], name: "index_articles_on_maker_id"
     t.index ["new_article_id"], name: "index_articles_on_new_article_id"
   end
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_171751) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "articles", "articles", column: "new_article_id"
   add_foreign_key "articles", "makers"
-  add_foreign_key "articles", "new_articles"
   add_foreign_key "client_articles", "articles"
   add_foreign_key "client_articles", "clients"
 end

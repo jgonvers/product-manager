@@ -7,7 +7,6 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.string :short_description
       t.boolean :contracted
       t.boolean :obsolete
-      t.references :new_article, foreign_key: true
       t.references :maker, null: false, foreign_key: true
       t.text :comment
 

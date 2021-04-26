@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
-  belongs_to :old_article, class_name: 'Article'
-  has_one :new_article, class_name: 'Article', foreign_key: "new_article_id"
+  has_one :old_article, class_name: 'Article', foreign_key: "new_article_id"
+  belongs_to :new_article, class_name: 'Article', foreign_key: "new_article_id", optional: true
   belongs_to :maker
 
   validates :unit_buy_cost, numericality: { only_integer: true, greater_than: 0 }
