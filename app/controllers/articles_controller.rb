@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   def index
+    @articles = Article.all
   end
 
   def new
@@ -9,6 +10,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
+    @client_articles = ClientArticle.where(article: @article)
   end
 
   def edit

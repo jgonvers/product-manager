@@ -1,0 +1,15 @@
+<div class="card-article">
+  <div class="card-line">
+    <p class="reference"><%= article.article_code %></p>
+    <p class="maker"><%= article.client.name %></p>
+  </div>
+  <div class="card-line">
+    <p>ref: <%= article.article.maker_reference %></p>
+    <p>prix de vente: <%= article.unit_sell_cost.fdiv(100).round(2) %></p>
+    <p>prix d'achat: <%= (article.unit_buy_cost.nil? ? article.article.unit_buy_cost : article.unit_buy_cost).fdiv(100).round(2) %></p>
+  </div>
+  <div class="card-line">
+    <p>DDP: <%= article.DDP.nil? ? "-" : article.DDP %></p>
+    <p class="<%= Time.now > article.validity ? "invalid" : "valid" %>">Validité: <%= article.validity.strftime("%d/%m/%Y") %></p>
+  </div>
+</div>
