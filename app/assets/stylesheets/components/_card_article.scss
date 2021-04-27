@@ -1,0 +1,42 @@
+.card-article {
+  width: 600px;
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  div.card-line {
+    width: 90%;
+    margin-left: 25px;
+    display:inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  p.reference {
+    color: darkblue;
+    font-size: larger;
+    font-weight: bold;
+  }
+  p.maker {
+    font-size: large;
+  }
+  p.description {
+    margin-left: 25px;
+    font-size: medium;
+  }
+
+  .valid { background-color: green;}
+  .invalid { background-color: palevioletred;}
+}
+
+.card-article:hover {
+  background-color: grey;
+}
+.obsolete {
+  border-color: red;
+}

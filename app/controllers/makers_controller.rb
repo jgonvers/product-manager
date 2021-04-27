@@ -1,5 +1,6 @@
 class MakersController < ApplicationController
   def index
+    @makers = Maker.all
   end
 
   def new
@@ -9,6 +10,8 @@ class MakersController < ApplicationController
   end
 
   def show
+    @maker = Maker.find(params[:id])
+    @articles = @maker.articles
   end
 
   def edit

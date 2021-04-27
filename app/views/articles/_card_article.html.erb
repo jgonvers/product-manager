@@ -1,0 +1,9 @@
+<div class="card-article <%= "obsolete" if article.obsolete %>">
+  <div class="card-line">
+    <p class="reference"><%= article.maker_reference %></p>
+    <p class="maker"><%= article.maker.name %></p>
+  </div>
+  <div class="card-line">
+    <p class="description"><%= article.short_description.nil? ? article.description : article.short_description %></p>
+  </div>
+</div>

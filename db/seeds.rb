@@ -20,7 +20,8 @@ makers = Maker.all
               unit_buy_cost:(85..400).to_a.sample,
               description: Faker::Appliance.equipment,
               maker: makers.sample,
-              obsolete: true).save!
+              obsolete: true,
+              contracted: false).save!
   puts "."
 end
 
@@ -30,7 +31,8 @@ puts "create 50 non obsolete articles"
               unit_buy_cost:(85..400).to_a.sample,
               description: Faker::Appliance.equipment,
               maker: makers.sample,
-              obsolete: false).save!
+              obsolete: false,
+              contracted: false).save!
   puts "."
 end
 
@@ -42,7 +44,8 @@ Article.where(obsolete: true).each do |art|
               description: art.description,
               maker: art.maker,
               obsolete: false,
-              old_article: art).save!
+              old_article: art,
+              contracted: false).save!
   puts "."
 end
 

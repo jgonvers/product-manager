@@ -1,5 +1,6 @@
 class ClientArticlesController < ApplicationController
   def index
+    @client_articles = ClientArticle.all
   end
 
   def new

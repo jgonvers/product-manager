@@ -1,2 +1,49 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="container">
+  <div class="article-data">
+    <h1><%= @article.maker_reference%></h1>
+    <div class="data">
+      <h2>Fabricant:</h2>
+      <p><%= @article.maker.name %></p>
+    </div>
+    <div class="data">
+      <h2>Prix d'achat:</h2>
+      <p><%= @article.unit_buy_cost.fdiv(100).round(2) %></p>
+    </div>
+    <div class="data">
+      <h2>Contrat:</h2>
+      <i class="fas <%= @article.contracted ? "fa-check" : "fa-times" %>"></i>
+    </div>
+    <div class="data">
+      <h2>Obsolete:</h2>
+      <i class="fas <%= @article.obsolete ? "fa-check" : "fa-times" %>"></i>
+    </div>
+    <% if @article.obsolete %>
+      <div class="data">
+        <h2>Remplacement:</h2>
+        <%= link_to  @article.new_article.maker_reference, article_path(@article.new_article) %>
+      </div>
+    <% end %>
+
+    <div class="description">
+      <h2>Description longue:</h2>
+      <p><%= @article.description.nil? ? "pas de description" : @article.description %></p>
+    <div class="description">
+      <h2>Description courte:</h2>
+      <p><%= @article.short_description.nil? ? "pas de description courte" : @article.short_description %></p>
+    </div>
+    <div class="description">
+      <h2>Commentaire</h2>
+      <p><%= @article.comment.nil? ? "pas de commentaire" : @article.comment %></p>
+    </div>
+  </div>
+</div>
+  <% unless @client_articles.count.zero? %>
+    <div>
+      <h2 class="mt-5 text-center">Articles client:</h2>
+        <% @client_articles.each do |article| %>
+          <%= link_to client_article_path(article), class: "text-reset text-decoration-none" do %>
+            <%= render  "client_articles/card_client_article", article: article %>
+          <% end %>
+        <% end %>
+    </div>
+  <% end %>
