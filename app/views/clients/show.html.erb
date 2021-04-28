@@ -1,2 +1,9 @@
-<h1>Clients#show</h1>
-<p>Find me in app/views/clients/show.html.erb</p>
+<div class="container">
+  <h1 class="text-center m-5"><%= @client.name %></h1>
+  <h2 class="text-center">articles:</h2>
+  <% @articles.each do |article| %>
+    <%= link_to article_path(article.article), class: "text-reset text-decoration-none" do %>
+      <%= render  "client_articles/card_client_article", article: article %>
+    <% end %>
+  <% end %>
+</div>

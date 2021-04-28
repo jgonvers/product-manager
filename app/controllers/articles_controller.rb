@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @client_articles = ClientArticle.where(article: @article)
+    @client_articles = @article.client_articles.sort_by(&:validity)
   end
 
   def edit

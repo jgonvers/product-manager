@@ -1,6 +1,6 @@
 class ClientArticlesController < ApplicationController
   def index
-    @client_articles = ClientArticle.all
+    @client_articles = ClientArticle.all.sort_by(&:validity)
   end
 
   def new

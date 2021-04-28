@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   def index
+    @clients = Client.all
   end
 
   def new
@@ -9,6 +10,8 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @client = Client.find(params[:id])
+    @articles = @client.client_articles.sort_by(&:validity)
   end
 
   def edit
